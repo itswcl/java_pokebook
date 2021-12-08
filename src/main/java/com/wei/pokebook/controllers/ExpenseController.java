@@ -108,4 +108,15 @@ public class ExpenseController {
 	}
 	
 	
+	@GetMapping("/pokebook/{expenseId}")
+	public String displayOne(
+			@PathVariable("expenseId") Long expenseId,
+			Model model) {
+		
+		Expense expense = expenseService.findExpense(expenseId);
+		
+		model.addAttribute("expense", expense);
+		return "/pokebook/show.jsp";
+	}
+	
 }

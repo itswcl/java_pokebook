@@ -34,7 +34,7 @@
 				<tbody>
 					<c:forEach var="expense" items="${ expenses }">
 						<tr>
-							<th><c:out value="${ expense.name }" /></th>
+							<th><a href="/pokebook/${expense.id}"><c:out value="${ expense.name }" /></a></th>
 							<th><c:out value="${ expense.vendor }" /></th>
 							<th>$<c:out value="${ expense.amount }" /></th>
 							<th>
