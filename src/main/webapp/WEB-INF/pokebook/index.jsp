@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page isErrorPage="true"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,14 +28,25 @@
 						<th>Expense</th>
 						<th>Vendor</th>
 						<th>Amount</th>
+						<th>Option</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="expense" items="${ expenses }">
-					<<tr>
+						<tr>
 							<th><c:out value="${ expense.name }" /></th>
 							<th><c:out value="${ expense.vendor }" /></th>
 							<th>$<c:out value="${ expense.amount }" /></th>
+							<th>
+								<div class="d-flex">
+									<a class="btn" href="/pokebook/${expense.id}/edit">Edit</a>
+									
+									<form action="/pokebook/${expense.id}" method="post">
+										<input type="hidden" name="_method" value="delete">
+										<input class="btn"type="submit" value="Delete">
+									</form>
+								</div>
+							</th>
 						</tr>
 					</c:forEach>
 				</tbody>
